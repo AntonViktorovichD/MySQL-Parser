@@ -29,7 +29,10 @@ function get_tables($db)
 
 function get_dump($db, $tables)
 {
-
+   $sql_dir = 'sql';
+   if(!is_dir($sql_dir)) {
+      mkdir($sql_dir);
+   }
    if (is_array($tables)) {
       date_default_timezone_set("Europe/Moscow");
       $fp = fopen(DIR_SQL . date("m.d.y_H-i-s") . "_dump.sql", "w");
