@@ -86,9 +86,9 @@ function get_dump($db, $tables)
 function make_archive()
 {
    $pathdir = 'sql/';
-   $name_arhive = date("m.d.y_H-i-s ") . 'sql_dump.zip';
+   $name_archive = date("m.d.y_H-i-s ") . 'sql_dump.zip';
    $zip = new ZipArchive;
-   if ($zip->open($name_arhive, ZipArchive::CREATE) === TRUE) {
+   if ($zip->open($name_archive, ZipArchive::CREATE) === TRUE) {
       $dir = opendir($pathdir); // открываем папку с файлами
       while ($file = readdir($dir)) {
          if (is_file($pathdir . $file)) {
