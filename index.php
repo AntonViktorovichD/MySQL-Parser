@@ -11,6 +11,5 @@ $tables = get_tables($db);
 get_dump($db,$tables);
 
 
-var_dump($tables);
 
 ?>

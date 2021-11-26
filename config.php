@@ -5,5 +5,5 @@ define("PASSWORD",'');
 define("DB",'my_wiki');
 
 define("DIR_SQL",'sql/');
-define("FOR_WRITE",10);
+//define("FOR_WRITE",10);
 ?>
