@@ -37,7 +37,7 @@ function get_dump($db, $tables)
    if (is_array($tables)) {
       foreach ($tables as $item) {
          date_default_timezone_set("Europe/Moscow");
-         $fp = fopen(DIR_SQL . date("m.d.y_H-i ") . $item . "_dump.sql", "w");
+         $fp = fopen(DIR_SQL . $item . "_dump.sql", "w");
 
          $text = "";
          $sql = "SHOW CREATE TABLE " . $item;
@@ -86,7 +86,7 @@ function get_dump($db, $tables)
 function make_archive()
 {
    $pathdir = 'sql/';
-   $name_arhive = date("m.d.y_H-i ") . 'sql_dump.zip';
+   $name_arhive = date("m.d.y_H-i-s ") . 'sql_dump.zip';
    $zip = new ZipArchive;
    if ($zip->open($name_arhive, ZipArchive::CREATE) === TRUE) {
       $dir = opendir($pathdir); // открываем папку с файлами
