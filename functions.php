@@ -83,6 +83,41 @@ function get_dump($db, $tables)
    }
 }
 
+function make_archive()
+{
+   $pathdir = 'sql/';
+   $name_arhive = date("m.d.y_H-i ") . 'sql_dump.zip';
+   $zip = new ZipArchive;
+   if ($zip->open($name_arhive, ZipArchive::CREATE) === TRUE) {
+      $dir = opendir($pathdir); // открываем папку с файлами
+      while ($file = readdir($dir)) {
+         if (is_file($pathdir . $file)) {
+            $zip->addFile($pathdir . $file, $file);
+            echo("Заархивирован: " . $pathdir . $file), '<br/>';
+         }
+      }
+      $zip->close();
+      echo 'Архив успешно создан';
+      array_map('unlink', glob("$pathdir/*.*"));
+      rmdir($pathdir);
+   } else {
+      die ('Произошла ошибка при создании архива');
+   }
+}
+
+//$files = array_diff(scandir('sql'), ['..', '.']);
+//
+//$zip = new ZipArchive;
+//if ($zip->open('test.zip') === TRUE) {
+//   foreach ($files as $file) {
+//      $zip->addFile('sql . ' . $file . '.sql');
+//   }
+//   $zip->close();
+//   echo 'готово';
+//} else {
+//   echo 'ошибка';
+//}
+
 //function connect_db()
 //{
 //   $db = mysqli_connect(HOST, USER, PASSWORD, DB);
