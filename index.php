@@ -10,6 +10,8 @@ $tables = get_tables($db);
 
 get_dump($db,$tables);
 
-make_archive();
+db_archive();
+
+log_archive();
 
 ?>
